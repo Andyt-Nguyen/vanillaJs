@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta view="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<body onload="fetchPeople()">
+		<header class="header">
+			<h1 class="header__title">Vanilla The Javascript</h1>
+		</header> <!--header-->
+
+		<div id="container">
+			<div id="weatherSide">
+				<div class="weather__ele">
+					<h1 id="currentWea"></h1>
+					<h2 id="currentDes"></h2>
+					<img src="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/high-resolution-dark-blue-denim-jeans-icons-natural-wonders/052696-high-resolution-dark-blue-denim-jeans-icon-natural-wonders-sun9-sc37.png" alt="">
+				</div> <!--weather ele-->
+			</div> <!--weatherSide-->
+
+			<div id="peopleSide"></div> <!--peopleSide-->
+
+			<div id="formSide">
+				<h1 style="text-align:center">Add people</h1>
+				<form id="peopleForm">
+					<input id="name" class="userInput" type="text" placeholder="Name"> <br>
+					<input id="lastname" class="userInput" type="text" placeholder="Last Name"> <br>
+					<input class="userSubmit" type="submit" value="Submit">
+				</form>
+			</div> <!--formSide-->
+		</div> <!--container-->
+		<div>
+			<h1>Here are some things For Fun</h1>
+			<div id="books"></div>
+		</div>
+	</body>
+
+	<script src="./js.js" charset="utf-8"></script>
+</html>
