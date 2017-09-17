@@ -67,7 +67,7 @@ function removeUser(id) {
 
 
 function weatherPromise(lat, lon) {
-	var promise = fetch("http://api.openweathermap.org/data/2.5/weather?&units=imperial&lat="+lat+"&lon="+lon+ "&appid=a4fcb2af4c3e8404740fe72b07552771");
+	var promise = fetch("http://api.openweathermap.org/data/2.5/weather?&units=imperial&lat="+lat+"&lon="+lon+ "apiKey");
 	return promise;
 }
 
