@@ -16,7 +16,9 @@ var state = {
 					lastName: "Beasly"
 				}
 			],
-		weather:{change:true}
+		weather:{change:true},
+		currentSlide: 0,
+		images: ["https://placehold.it/150", "https://placehold.it/175", "https://placehold.it/200"]
 	};
 
 	function toggleCF() {
@@ -94,19 +96,36 @@ getWeather();
 
 
 
+//
+// (function somePeople(){
+// 	var promise = fetch('https://jsonplaceholder.typicode.com/posts');
+// 	return promise.then(function(res){
+// 		return res.json()
+// 	})
+// 	.then(function(data){
+// 		var output = "";
+// 		data.map(function(a){
+// 			output += `<h1>Title: ${a.title}</h1>
+// 								<p>The Body: ${a.body}</p>`;
+// 		});
+// 		var books = document.getElementById('books');
+// 		books.innerHTML = output;
+// 	});
+// })();
 
-(function somePeople(){
-	var promise = fetch('https://jsonplaceholder.typicode.com/posts');
-	return promise.then(function(res){
-		return res.json()
-	})
-	.then(function(data){
-		var output = "";
-		data.map(function(a){
-			output += `<h1>Title: ${a.title}</h1>
-								<p>The Body: ${a.body}</p>`;
-		});
-		var books = document.getElementById('books');
-		books.innerHTML = output;
-	});
-})();
+// var moveSlide = () => {
+// 	var slides = document.getElementById("slides");
+// 	slides.innerHTML = "<img src="+state.images[state.currentSlide]+"/>";
+// 	setInterval(function(){
+// 		if(state.currentSlide < state.images.length - 1) {
+// 			state.currentSlide ++;
+// 			console.log(state.currentSlide);
+// 			slides.innerHTML = "<img src="+state.images[state.currentSlide]+"/>";
+// 		} else {
+// 			state.currentSlide = 0;
+// 			slides.innerHTML = "<img src="+state.images[state.currentSlide]+"/>";
+// 		}
+// 	},3000)
+// }
+//
+// moveSlide();
