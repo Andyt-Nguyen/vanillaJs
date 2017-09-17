@@ -1,5 +1,6 @@
-
 var peopleForm = document.getElementById('peopleForm');
+var changeWeather = document.getElementById("changeWeather");
+changeWeather.addEventListener("click", toggleCF);
 peopleForm.addEventListener('submit', addPeople);
 
 var state = {
@@ -14,8 +15,22 @@ var state = {
 					name: "Pam",
 					lastName: "Beasly"
 				}
-			]
+			],
+		weather:{change:true}
 	};
+
+	function toggleCF() {
+		if(state.weather.change === true){
+			var celcius = (state.weather.temp - 32) * (5/9);
+			document.getElementById("currentWea").innerHTML = celcius.toFixed(1) + "<sup>o</sup>C";
+			state.weather.change = !state.weather.change;
+			console.log(state.weather.change);
+
+		} else {
+			state.weather.change = !state.weather.change;
+			document.getElementById("currentWea").innerHTML = state.weather.temp.toFixed(1) +"<sup>o</sup>F";
+		}
+	}
 
 
 function fetchPeople(){
@@ -52,11 +67,11 @@ function removeUser(id) {
 
 
 function weatherPromise(lat, lon) {
-	var promise = fetch("http://api.openweathermap.org/data/2.5/weather?&units=imperial&lat="+lat+"&lon="+lon+ "&appid=YOUR API KEY");
+	var promise = fetch("http://api.openweathermap.org/data/2.5/weather?&units=imperial&lat="+lat+"&lon="+lon+ "&appid=a4fcb2af4c3e8404740fe72b07552771");
 	return promise;
 }
 
-(function getWeather() {
+var getWeather = function() {
 	var locationPromise = fetch("http://ip-api.com/json");
 	return locationPromise.then(function(res){
 		return res.json()
@@ -67,10 +82,18 @@ function weatherPromise(lat, lon) {
 	}).then(function(data){
 		var weather = document.getElementById('currentWea');
 		var desc = document.getElementById('currentDes');
-		weather.innerHTML = `Temperature <br> ${data.main.temp} <sup>o</sup>F`;
-		desc.innerHTML = `${data.weather[0].description}`
+		state.weather.temp = data.main.temp;
+		state.weather.description = data.weather[0].description;
+		weather.innerHTML = state.weather.temp +"<sup>o</sup>F";
+		desc.innerHTML = state.weather.description;
 	});
-})();
+};
+getWeather();
+
+
+
+
+
 
 (function somePeople(){
 	var promise = fetch('https://jsonplaceholder.typicode.com/posts');
